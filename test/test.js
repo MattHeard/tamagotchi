@@ -15,3 +15,10 @@ QUnit.test("A tamagotchi can be told something", function(assert) {
   tamagotchi = new Tamagotchi();
   assert.ok(tamagotchi.tell("hello"));
 });
+
+QUnit.test("Telling a tamagotchi 'are you hungry?' will open the hunger screen",
+        function(assert) {
+  tamagotchi = new Tamagotchi();
+  tamagotchi.tell("are you hungry?");
+  assert.equal(tamagotchi.screen, "hunger");
+});
