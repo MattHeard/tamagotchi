@@ -14,9 +14,9 @@ var t = {
             getContent: function () {
                 if (name === "main") {
                     return "\u{1F431}";
-                } else {
-                    return "\u{274C}\u{274C}\u{274C}\u{274C}";
                 }
+
+                return "\u{274C}\u{274C}\u{274C}\u{274C}";
             },
 
             redraw: function () {
