@@ -60,7 +60,7 @@ var t = {
     }
 };
 
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
     if (window.location.pathname === "/tamagotchi.html") {
         var content = document.createElement("DIV");
         content.className = "content";
