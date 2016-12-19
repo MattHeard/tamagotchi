@@ -3,7 +3,15 @@
 var t = {
     Screen: function () {
         return {
-            content: "❌❌❌❌"
+            content: "❌❌❌❌",
+
+            setContent: function (text) {
+                document.getElementsByClassName("content")[0].innerHTML = text;
+            },
+
+            redraw: function () {
+                this.setContent(this.content);
+            }
         };
     },
 
