@@ -1,1 +1,3 @@
-function Tamagotchi() { }
+function Tamagotchi() {
+  this.screen = "main";
+};
