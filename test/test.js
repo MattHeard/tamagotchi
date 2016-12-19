@@ -1,9 +1,9 @@
 QUnit.test("Tamagotchi type is defined", function(assert) {
-  assert.ok(Tamagotchi, "Passed!");
+  assert.ok(Tamagotchi);
 });
 
 QUnit.test("Tamagotchi can be instantiated", function(assert) {
-  assert.ok(new Tamagotchi(), "Passed!");
+  assert.ok(new Tamagotchi());
 });
 
 QUnit.test("The first screen is the main screen", function(assert) {
