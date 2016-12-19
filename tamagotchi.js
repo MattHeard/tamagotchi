@@ -1,3 +1,5 @@
+"use strict";
+
 function Tamagotchi() {
   return {
     screen: "main",
