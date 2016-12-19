@@ -21,3 +21,10 @@ QUnit.test("Telling a tamagotchi 'are you hungry?' will open the hunger screen",
     tamagotchi.tell("are you hungry?");
     assert.equal(tamagotchi.screen, "hunger");
 });
+
+QUnit.test("A hungry tamagotchi shows 4 ❌ marks", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.howWellFed = 0;
+    screen = tamagotchi.getScreen("hunger");
+    assert.equal(screen.content, "❌❌❌❌");
+});
