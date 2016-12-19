@@ -3,14 +3,8 @@
 var t = {
     GameScreen: function (name) {
         return {
-            content: "❌❌❌❌",
-
             setContent: function (text) {
                 document.getElementsByClassName("content")[0].innerHTML = text;
-            },
-
-            redraw: function () {
-                this.setContent(this.content);
             },
 
             getName: function () {
@@ -18,7 +12,15 @@ var t = {
             },
 
             getContent: function () {
-                return this.content;
+                if (name === "main") {
+                    return "\u{1F431}";
+                } else {
+                    return "\u{274C}\u{274C}\u{274C}\u{274C}";
+                }
+            },
+
+            redraw: function () {
+                this.setContent(this.getContent());
             }
         };
     },
@@ -42,10 +44,20 @@ var t = {
             tell: function (message) {
                 if (message === "are you hungry?") {
                     this.gameScreen = new t.GameScreen("hunger");
+                    this.refresh();
                 }
 
                 return message;
+            },
+
+            refresh: function () {
+                this.gameScreen.redraw();
             }
         };
     }
 };
+
+window.addEventListener("load", function() {
+    t.tamagotchi = new t.Tamagotchi();
+    t.tamagotchi.refresh();
+});
