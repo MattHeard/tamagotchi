@@ -1,14 +1,16 @@
 "use strict";
 
-function Tamagotchi() {
-    return {
-        screen: "main",
-        tell: function (message) {
-            if (message === "are you hungry?") {
-                this.screen = "hunger";
-            }
+var t = {
+    Tamagotchi: function () {
+        return {
+            screen: "main",
+            tell: function (message) {
+                if (message === "are you hungry?") {
+                    this.screen = "hunger";
+                }
 
-            return message;
-        }
-    };
-}
+                return message;
+            }
+        };
+    }
+};
