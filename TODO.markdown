@@ -9,7 +9,7 @@
 * There is a hunger screen which shows between zero and four hearts, inclusive.
 * Every minute, the number of hearts decreases by one, until there are no more
 * hearts.
-* The cat starts with four hearts.
+* The cat starts with zero hearts.
 * If the cat has four hearts, it will be smiling with an open mouth.
 * If the cat has one to three hearts, inclusive, it will have an otherwise
 * regular cat face.
