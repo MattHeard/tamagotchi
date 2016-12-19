@@ -1,6 +1,8 @@
 function Tamagotchi() {
-  this.screen = "main";
-  this.tell = function(message) {
-    return message;
+  return {
+    screen: "main",
+    tell: function(message) {
+      return message;
+    }
   };
-};
+}
