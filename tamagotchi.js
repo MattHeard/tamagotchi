@@ -1,7 +1,7 @@
 "use strict";
 
 var t = {
-    changeContent: function(text) {
+    changeContent: function (text) {
         document.getElementsByClassName("content")[0].innerHTML = text;
     },
 
