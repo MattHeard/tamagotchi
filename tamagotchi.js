@@ -1,7 +1,7 @@
 "use strict";
 
 var t = {
-    Screen: function () {
+    GameScreen: function (name) {
         return {
             content: "❌❌❌❌",
 
@@ -11,21 +11,37 @@ var t = {
 
             redraw: function () {
                 this.setContent(this.content);
+            },
+
+            getName: function () {
+                return name;
+            },
+
+            getContent: function () {
+                return this.content;
             }
         };
     },
 
     Tamagotchi: function () {
         return {
-            getScreen: function () {
-                return new t.Screen();
+            gameScreen: new t.GameScreen("main"),
+
+            getGameScreen: function () {
+                return this.gameScreen;
             },
 
-            screen_name: "main",
+            getGameScreenName: function () {
+                return this.gameScreen.getName();
+            },
+
+            getGameScreenContent: function () {
+                return this.gameScreen.getContent();
+            },
 
             tell: function (message) {
                 if (message === "are you hungry?") {
-                    this.screen = "hunger";
+                    this.gameScreen = new t.GameScreen("hunger");
                 }
 
                 return message;
