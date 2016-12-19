@@ -28,7 +28,7 @@
 
 * The tamagotchi starts on the MAIN screen.
 * Saying "feed the cat" on any screen will open the FEEDING screen.
-* Saying "how hungry is the cat?" on any screen will open the HUNGER screen.
+* Saying "are you hungry?" on any screen will open the HUNGER screen.
 * Saying "hello cat" on any screen will open the MAIN screen.
 * Saying "feed the cat a meal" on the FEEDING screen will open the MAIN screen.
 * Saying "feed the cat a snack" on the FEEDING screen will open the MAIN screen.
