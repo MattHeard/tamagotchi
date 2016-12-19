@@ -10,3 +10,8 @@ QUnit.test("The first screen is the main screen", function(assert) {
   tamagotchi = new Tamagotchi();
   assert.equal(tamagotchi.screen, "main");
 });
+
+QUnit.test("A tamagotchi can be told something", function(assert) {
+  tamagotchi = new Tamagotchi();
+  assert.ok(tamagotchi.tell("hello"));
+});
