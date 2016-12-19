@@ -1,0 +1,9 @@
+body {
+  background-image: url("background.jpg");
+}
+
+.cat {
+  font-size: 25vw;
+  margin-top: 40vh;
+  text-align: center;
+}
