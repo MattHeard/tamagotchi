@@ -3,7 +3,7 @@
 function Tamagotchi() {
     return {
         screen: "main",
-        tell: function(message) {
+        tell: function (message) {
             return message;
         }
     };
