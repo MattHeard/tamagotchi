@@ -1,12 +1,12 @@
 "use strict";
 
 var t = {
+    changeContent: function(text) {
+        document.getElementsByClassName("content")[0].innerHTML = text;
+    },
+
     GameScreen: function (name) {
         return {
-            setContent: function (text) {
-                document.getElementsByClassName("content")[0].innerHTML = text;
-            },
-
             getName: function () {
                 return name;
             },
@@ -20,7 +20,7 @@ var t = {
             },
 
             redraw: function () {
-                this.setContent(this.getContent());
+                t.changeContent(this.getContent());
             }
         };
     },
@@ -45,6 +45,9 @@ var t = {
                 if (message === "are you hungry?") {
                     this.gameScreen = new t.GameScreen("hunger");
                     this.refresh();
+                } else {
+                    this.gameScreen = new t.GameScreen("main");
+                    this.refresh();
                 }
 
                 return message;
@@ -58,6 +61,17 @@ var t = {
 };
 
 window.addEventListener("load", function() {
-    t.tamagotchi = new t.Tamagotchi();
-    t.tamagotchi.refresh();
+    if (window.location.pathname === "/tamagotchi.html") {
+        var content = document.createElement("DIV");
+        content.className = "content";
+        document.body.appendChild(content);
+
+        t.tamagotchi = new t.Tamagotchi();
+        t.tamagotchi.refresh();
+    }
 });
+
+// Shortcut
+function tell(message) {
+    t.tamagotchi.tell(message);
+}

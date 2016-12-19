@@ -1,3 +1,9 @@
+QUnit.module("Tamagotchi", {
+    beforeEach: function() {
+        t.changeContent = function() { }; // Stubbed out
+    }
+});
+
 QUnit.test("Tamagotchi type is defined", function(assert) {
     assert.ok(t.Tamagotchi);
 });
@@ -21,7 +27,14 @@ QUnit.test("A tamagotchi can be told something", function(assert) {
     assert.ok(tamagotchi.tell("hello"));
 });
 
-QUnit.test("Telling a tamagotchi 'are you hungry?' will open the hunger screen", function(assert) {
+QUnit.test("'where are you?' will open the main screen", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("are you hungry?"); // Open another screen
+    tamagotchi.tell("where are you?");
+    assert.equal(tamagotchi.getGameScreenName(), "main");
+});
+
+QUnit.test("'are you hungry?' will open the hunger screen", function(assert) {
     tamagotchi = new t.Tamagotchi();
     tamagotchi.tell("are you hungry?");
     assert.equal(tamagotchi.getGameScreenName(), "hunger");
