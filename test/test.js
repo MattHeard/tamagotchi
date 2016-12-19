@@ -8,7 +8,7 @@ QUnit.test("Tamagotchi can be instantiated", function(assert) {
 
 QUnit.test("The first screen is the main screen", function(assert) {
     tamagotchi = new t.Tamagotchi();
-    assert.equal(tamagotchi.screen, "main");
+    assert.equal(tamagotchi.screen_name, "main");
 });
 
 QUnit.test("A tamagotchi can be told something", function(assert) {

@@ -21,7 +21,7 @@ var t = {
                 return new t.Screen();
             },
 
-            screen: "main",
+            screen_name: "main",
 
             tell: function (message) {
                 if (message === "are you hungry?") {
