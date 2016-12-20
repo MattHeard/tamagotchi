@@ -43,25 +43,29 @@ var t = {
                 return this.gameScreen.getContent();
             },
 
+            newGameScreen: function (name) {
+                return new t.GameScreen(name, this);
+            },
+
             tell: function (message) {
                 if (message === "are you hungry?") {
-                    this.gameScreen = new t.GameScreen("hunger", this);
+                    this.gameScreen = this.newGameScreen("hunger");
                     this.refresh();
                 } else if (message === "let's eat") {
-                    this.gameScreen = new t.GameScreen("food", this);
+                    this.gameScreen = this.newGameScreen("food");
                     this.refresh();
                 } else if (message === "where are you?") {
-                    this.gameScreen = new t.GameScreen("main", this);
+                    this.gameScreen = this.newGameScreen("main");
                     this.refresh();
                 } else if (message === "have some bread") {
                     this.fullness = 4;
-                    this.gameScreen = new t.GameScreen("main", this);
+                    this.gameScreen = this.newGameScreen("main");
                     this.refresh();
                 } else if (message === "have some candy") {
                     if (this.fullness != 4) {
                         this.fullness += 1;
                     }
-                    this.gameScreen = new t.GameScreen("main", this);
+                    this.gameScreen = this.newGameScreen("main");
                     this.refresh();
                 }
 
