@@ -1,6 +1,8 @@
 QUnit.module("Tamagotchi", {
     before: function() {
-        t.changeContent = function() { }; // Stubbed out
+        // Stub out UI methods
+        t.changeContent = function () { };
+        t.animateContent = function () { };
     }
 });
 

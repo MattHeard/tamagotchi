@@ -24,6 +24,10 @@ var t = {
         };
     },
 
+    animateContent: function () {
+        document.getElementsByClassName("content")[0].className += " hello";
+    },
+
     GameScreen: function (name, tamagotchi) {
         return {
             getName: function () { return name; },
@@ -46,7 +50,9 @@ var t = {
                 return t.CONTENT[name];
             },
 
-            redraw: function () { t.changeContent(this.getContent()); }
+            redraw: function () { t.changeContent(this.getContent()); },
+
+            animate: function () { t.animateContent(); }
         };
     },
 
@@ -79,6 +85,10 @@ var t = {
                 }
             },
 
+            animate: function () {
+                this.gameScreen.animate();
+            },
+
             tell: function (message) {
                 var i;
                 if (message === "are you hungry") {
@@ -93,6 +103,8 @@ var t = {
                 } else if (message === "have some candy") {
                     this.increaseFullness();
                     this.changeGameScreen("main");
+                } else if (message === "hello") {
+                    this.animate();
                 }
 
                 return message;
@@ -124,6 +136,12 @@ window.addEventListener("load", function () {
         var content = document.createElement("DIV");
         content.className = "content";
         document.body.appendChild(content);
+
+        content = document.getElementsByClassName()[0];
+        content.addEventListener("transitionend", function () {
+            console.log("animation finished");
+            content.classList.remove("hello");
+        });
 
         t.tamagotchi = new t.Tamagotchi();
         t.tamagotchi.start();

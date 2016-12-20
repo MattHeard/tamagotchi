@@ -5,6 +5,30 @@ body {
 
 .content {
   font-size: 20vw;
-  margin-top: 40vh;
+  padding-top: 40vh;
   text-align: center;
+}
+
+@keyframes bounce {
+    10%, 90% {
+        transform: translate3d(0, -1vh, 0);
+    }
+
+    20%, 80% {
+        transform: translate3d(0, 2vh, 0);
+    }
+
+    30%, 50%, 70% {
+        transform: translate3d(0, -3vh, 0);
+    }
+
+    40%, 60% {
+        transform: translate3d(0, 3vh, 0);
+    }
+}
+
+/* The element to apply the animation to */
+.content.hello {
+    animation-name: bounce;
+    animation-duration: 2s;
 }
