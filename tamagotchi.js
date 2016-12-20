@@ -16,7 +16,12 @@ var t = {
 
             getContent: function () {
                 if (name === "hunger") {
-                    return "\u{2764}".repeat(tamagotchi.getFullness()) + "\u{274C}".repeat(4 - tamagotchi.getFullness());
+                    var fullness = tamagotchi.getFullness();
+                    var numberOfHearts = fullness;
+                    var hearts = "\u{2764}".repeat(numberOfHearts);
+                    var numberOfCrosses = 4 - fullness;
+                    var crosses = "\u{274C}".repeat(numberOfCrosses);
+                    return hearts + crosses;
                 }
 
                 return t.CONTENT[name];
