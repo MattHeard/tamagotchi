@@ -109,7 +109,6 @@ var t = {
                     this.fullness -= 1;
                     this.fullnessLastChanged += 60000;
                 }
-                console.log(this);
             }
         };
     }
