@@ -1,5 +1,5 @@
 QUnit.module("Tamagotchi", {
-    beforeEach: function() {
+    before: function() {
         t.changeContent = function() { }; // Stubbed out
     }
 });
