@@ -4,7 +4,6 @@ var webkitSpeechRecognition;
 
 var t = {
     CONTENT: {
-        main: "\u{1F431}",
         food: "\u{1F35E}\u{2753}\u{1F36C}"
     },
 
@@ -31,12 +30,17 @@ var t = {
 
             getContent: function () {
                 if (name === "hunger") {
-                    var fullness = tamagotchi.getFullness(),
-                        numberOfHearts = fullness,
+                    var numberOfHearts = tamagotchi.fullness,
                         hearts = "\u{2764}".repeat(numberOfHearts),
-                        numberOfCrosses = 4 - fullness,
+                        numberOfCrosses = 4 - tamagotchi.fullness,
                         crosses = "\u{274C}".repeat(numberOfCrosses);
                     return hearts + crosses;
+                }
+
+                if (name === "main") {
+                    if (tamagotchi.fullness === 4) { return "\u{1F63A}"; }
+
+                    return "\u{1F431}";
                 }
 
                 return t.CONTENT[name];
@@ -50,9 +54,6 @@ var t = {
         return {
             fullness: 0,
             gameScreen: new t.GameScreen("main", this),
-
-            getFullness: function () { return this.fullness; },
-            getGameScreen: function () { return this.gameScreen; },
 
             getGameScreenName: function () {
                 return this.gameScreen.getName();

@@ -88,3 +88,11 @@ QUnit.test("Feeding candy fills one heart", function(assert) {
     tamagotchi.tell("are you hungry");
     assert.equal(tamagotchi.getGameScreenContent(), "❤❌❌❌");
 });
+
+QUnit.test("The cat smiles when full", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("let's eat");
+    tamagotchi.tell("have some bread");
+    tamagotchi.tell("where are you");
+    assert.equal(tamagotchi.getGameScreenContent(), "😺");
+});
