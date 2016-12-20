@@ -80,11 +80,11 @@ var t = {
 
             tell: function (message) {
                 var i;
-                if (message === "are you hungry?") {
+                if (message === "are you hungry") {
                     this.changeGameScreen("hunger");
                 } else if (message === "let's eat") {
                     this.changeGameScreen("food");
-                } else if (message === "where are you?") {
+                } else if (message === "where are you") {
                     this.changeGameScreen("main");
                 } else if (message === "have some bread") {
                     for (i = 0; i < 4; i += 1) { this.increaseFullness(); }
