@@ -13,17 +13,9 @@ var t = {
 
     GameScreen: function (name) {
         return {
-            getName: function () {
-                return name;
-            },
-
-            getContent: function () {
-                return t.CONTENT[name];
-            },
-
-            redraw: function () {
-                t.changeContent(this.getContent());
-            }
+            getName: function () { return name; },
+            getContent: function () { return t.CONTENT[name]; },
+            redraw: function () { t.changeContent(this.getContent()); }
         };
     },
 
@@ -31,9 +23,7 @@ var t = {
         return {
             gameScreen: new t.GameScreen("main"),
 
-            getGameScreen: function () {
-                return this.gameScreen;
-            },
+            getGameScreen: function () { return this.gameScreen; },
 
             getGameScreenName: function () {
                 return this.gameScreen.getName();
@@ -58,9 +48,7 @@ var t = {
                 return message;
             },
 
-            refresh: function () {
-                this.gameScreen.redraw();
-            }
+            refresh: function () { this.gameScreen.redraw(); }
         };
     }
 };
@@ -77,6 +65,4 @@ window.addEventListener("load", function () {
 });
 
 // Shortcut
-function tell(message) {
-    t.tamagotchi.tell(message);
-}
+function tell(message) { t.tamagotchi.tell(message); }
