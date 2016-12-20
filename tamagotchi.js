@@ -10,6 +10,10 @@ var t = {
         document.getElementsByClassName("content")[0].innerHTML = text;
     },
 
+    now: function () {
+        return Date.now();
+    },
+
     GameScreen: function (name, tamagotchi) {
         return {
             getName: function () { return name; },
@@ -59,7 +63,7 @@ var t = {
             increaseFullness: function () {
                 if (this.fullness !== 4) {
                     this.fullness += 1;
-                    this.fullnessLastChanged = Date.now();
+                    this.fullnessLastChanged = t.now();
                 }
             },
 
