@@ -1,10 +1,14 @@
 "use strict";
 
+var webkitSpeechRecognition;
+
 var t = {
     CONTENT: {
         main: "\u{1F431}",
         food: "\u{1F35E}\u{2753}\u{1F36C}"
     },
+
+    SpeechRecogniser: webkitSpeechRecognition,
 
     changeContent: function (text) {
         document.getElementsByClassName("content")[0].innerHTML = text;
@@ -125,18 +129,22 @@ window.addEventListener("load", function () {
 
         setInterval(t.tick(t.tamagotchi), 10000);
 
-        t.speechRecogniser = new webkitSpeechRecognition();
+        t.speechRecogniser = new t.SpeechRecogniser();
         t.speechRecogniser.onend = function () { t.speechRecogniser.start(); };
+
         t.speechRecogniser.onresult = function () {
-            var transcript = "";
-            for (var i = event.resultIndex; i < event.results.length; i += 1) {
+            var transcript = "", i;
+
+            for (i = event.resultIndex; i < event.results.length; i += 1) {
                 if (event.results[i].isFinal) {
                     transcript += event.results[i][0].transcript;
                 }
             }
+
             console.log(transcript);
             t.tamagotchi.tell(transcript);
         };
+
         t.speechRecogniser.start();
     }
 });
