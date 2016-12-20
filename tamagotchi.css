@@ -1,5 +1,6 @@
 body {
   background-image: url("background.jpg");
+  font-family: "NotoColorEmoji", "Apple Color Emoji";
 }
 
 .content {

@@ -72,3 +72,11 @@ QUnit.test("Feeding candy will open the main screen", function(assert) {
     tamagotchi.tell("have some candy");
     assert.equal(tamagotchi.getGameScreenName(), "main");
 });
+
+QUnit.test("Feeding bread will make the cat full", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("let's eat");
+    tamagotchi.tell("have some bread");
+    tamagotchi.tell("are you hungry?");
+    assert.equal(tamagotchi.getGameScreenContent(), "❤️❤️❤️❤️");
+});

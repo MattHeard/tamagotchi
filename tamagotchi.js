@@ -11,18 +11,28 @@ var t = {
         document.getElementsByClassName("content")[0].innerHTML = text;
     },
 
-    GameScreen: function (name) {
+    GameScreen: function (name, tamagotchi) {
         return {
             getName: function () { return name; },
-            getContent: function () { return t.CONTENT[name]; },
+
+            getContent: function () {
+                if (name === "hunger") {
+                    return "\u{2764}".repeat(tamagotchi.getFullness()) + "\u{274C}".repeat(4 - tamagotchi.getFullness());
+                }
+
+                return t.CONTENT[name];
+            },
+
             redraw: function () { t.changeContent(this.getContent()); }
         };
     },
 
     Tamagotchi: function () {
         return {
-            gameScreen: new t.GameScreen("main"),
+            fullness: 0,
+            gameScreen: new t.GameScreen("main", this),
 
+            getFullness: function () { return this.fullness; },
             getGameScreen: function () { return this.gameScreen; },
 
             getGameScreenName: function () {
@@ -35,19 +45,20 @@ var t = {
 
             tell: function (message) {
                 if (message === "are you hungry?") {
-                    this.gameScreen = new t.GameScreen("hunger");
+                    this.gameScreen = new t.GameScreen("hunger", this);
                     this.refresh();
                 } else if (message === "let's eat") {
-                    this.gameScreen = new t.GameScreen("food");
+                    this.gameScreen = new t.GameScreen("food", this);
                     this.refresh();
                 } else if (message === "where are you?") {
-                    this.gameScreen = new t.GameScreen("main");
+                    this.gameScreen = new t.GameScreen("main", this);
                     this.refresh();
                 } else if (message === "have some bread") {
-                    this.gameScreen = new t.GameScreen("main");
+                    this.fullness = 4;
+                    this.gameScreen = new t.GameScreen("main", this);
                     this.refresh();
                 } else if (message === "have some candy") {
-                    this.gameScreen = new t.GameScreen("main");
+                    this.gameScreen = new t.GameScreen("main", this);
                     this.refresh();
                 }
 
