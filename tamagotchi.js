@@ -3,7 +3,6 @@
 var t = {
     CONTENT: {
         main: "\u{1F431}",
-        hunger: "\u{274C}\u{274C}\u{274C}\u{274C}",
         food: "\u{1F35E}\u{2753}\u{1F36C}"
     },
 
