@@ -51,9 +51,16 @@ var t = {
                 return new t.GameScreen(name, this);
             },
 
-            changeGameScreen: function(name) {
+            changeGameScreen: function (name) {
                 this.gameScreen = this.newGameScreen(name);
                 this.refresh();
+            },
+
+            increaseFullness: function () {
+                if (this.fullness != 4) {
+                    this.fullness += 1;
+                    this.fullnessLastChanged = Date.now();
+                }
             },
 
             tell: function (message) {
@@ -64,10 +71,10 @@ var t = {
                 } else if (message === "where are you?") {
                     this.changeGameScreen("main");
                 } else if (message === "have some bread") {
-                    this.fullness = 4;
+                    for (var i = 0; i < 4; ++i) { this.increaseFullness(); }
                     this.changeGameScreen("main");
                 } else if (message === "have some candy") {
-                    if (this.fullness != 4) { this.fullness += 1; }
+                    this.increaseFullness();
                     this.changeGameScreen("main");
                 }
 
@@ -75,6 +82,11 @@ var t = {
             },
 
             refresh: function () { this.gameScreen.redraw(); },
+
+            start: function () {
+                this.fullnessLastChanged = Date.now();
+                this.refresh();
+            }
         };
     }
 };
@@ -86,7 +98,7 @@ window.addEventListener("load", function () {
         document.body.appendChild(content);
 
         t.tamagotchi = new t.Tamagotchi();
-        t.tamagotchi.refresh();
+        t.tamagotchi.start();
     }
 });
 
