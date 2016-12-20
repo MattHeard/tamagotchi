@@ -137,6 +137,7 @@ window.addEventListener("load", function () {
             console.log(transcript);
             t.tamagotchi.tell(transcript);
         };
+        t.speechRecogniser.start();
     }
 });
 
