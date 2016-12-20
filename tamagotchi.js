@@ -14,6 +14,13 @@ var t = {
         return Date.now();
     },
 
+    tick: function (tamagotchi) {
+        return function () {
+            tamagotchi.updateFullness();
+            tamagotchi.refresh();
+        };
+    },
+
     GameScreen: function (name, tamagotchi) {
         return {
             getName: function () { return name; },
@@ -89,8 +96,20 @@ var t = {
             refresh: function () { this.gameScreen.redraw(); },
 
             start: function () {
-                this.fullnessLastChanged = Date.now();
+                this.fullnessLastChanged = t.now();
                 this.refresh();
+            },
+
+            timeSinceFullnessLastChanged: function () {
+                return t.now() - this.fullnessLastChanged;
+            },
+
+            updateFullness: function () {
+                while (this.fullness > 0 && this.timeSinceFullnessLastChanged() > 60000) {
+                    this.fullness -= 1;
+                    this.fullnessLastChanged += 60000;
+                }
+                console.log(this);
             }
         };
     }
@@ -104,6 +123,8 @@ window.addEventListener("load", function () {
 
         t.tamagotchi = new t.Tamagotchi();
         t.tamagotchi.start();
+
+        setInterval(t.tick(t.tamagotchi), 10000);
     }
 });
 
