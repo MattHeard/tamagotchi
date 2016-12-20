@@ -16,11 +16,11 @@ var t = {
 
             getContent: function () {
                 if (name === "hunger") {
-                    var fullness = tamagotchi.getFullness();
-                    var numberOfHearts = fullness;
-                    var hearts = "\u{2764}".repeat(numberOfHearts);
-                    var numberOfCrosses = 4 - fullness;
-                    var crosses = "\u{274C}".repeat(numberOfCrosses);
+                    var fullness = tamagotchi.getFullness(),
+                        numberOfHearts = fullness,
+                        hearts = "\u{2764}".repeat(numberOfHearts),
+                        numberOfCrosses = 4 - fullness,
+                        crosses = "\u{274C}".repeat(numberOfCrosses);
                     return hearts + crosses;
                 }
 
@@ -57,13 +57,14 @@ var t = {
             },
 
             increaseFullness: function () {
-                if (this.fullness != 4) {
+                if (this.fullness !== 4) {
                     this.fullness += 1;
                     this.fullnessLastChanged = Date.now();
                 }
             },
 
             tell: function (message) {
+                var i;
                 if (message === "are you hungry?") {
                     this.changeGameScreen("hunger");
                 } else if (message === "let's eat") {
@@ -71,7 +72,7 @@ var t = {
                 } else if (message === "where are you?") {
                     this.changeGameScreen("main");
                 } else if (message === "have some bread") {
-                    for (var i = 0; i < 4; ++i) { this.increaseFullness(); }
+                    for (i = 0; i < 4; i += 1) { this.increaseFullness(); }
                     this.changeGameScreen("main");
                 } else if (message === "have some candy") {
                     this.increaseFullness();
