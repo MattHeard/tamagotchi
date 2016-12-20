@@ -78,5 +78,13 @@ QUnit.test("Feeding bread will make the cat full", function(assert) {
     tamagotchi.tell("let's eat");
     tamagotchi.tell("have some bread");
     tamagotchi.tell("are you hungry?");
-    assert.equal(tamagotchi.getGameScreenContent(), "❤️❤️❤️❤️");
+    assert.equal(tamagotchi.getGameScreenContent(), "❤❤❤❤");
+});
+
+QUnit.test("Feeding candy fills one heart", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("let's eat");
+    tamagotchi.tell("have some candy");
+    tamagotchi.tell("are you hungry?");
+    assert.equal(tamagotchi.getGameScreenContent(), "❤❌❌❌");
 });

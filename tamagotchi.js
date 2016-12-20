@@ -58,6 +58,9 @@ var t = {
                     this.gameScreen = new t.GameScreen("main", this);
                     this.refresh();
                 } else if (message === "have some candy") {
+                    if (this.fullness != 4) {
+                        this.fullness += 1;
+                    }
                     this.gameScreen = new t.GameScreen("main", this);
                     this.refresh();
                 }
