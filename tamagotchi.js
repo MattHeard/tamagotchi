@@ -46,6 +46,9 @@ var t = {
                 } else if (message === "have some bread") {
                     this.gameScreen = new t.GameScreen("main");
                     this.refresh();
+                } else if (message === "have some candy") {
+                    this.gameScreen = new t.GameScreen("main");
+                    this.refresh();
                 }
 
                 return message;
