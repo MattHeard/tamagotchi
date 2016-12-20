@@ -124,6 +124,19 @@ window.addEventListener("load", function () {
         t.tamagotchi.start();
 
         setInterval(t.tick(t.tamagotchi), 10000);
+
+        t.speechRecogniser = new webkitSpeechRecognition();
+        t.speechRecogniser.onend = function () { t.speechRecogniser.start(); };
+        t.speechRecogniser.onresult = function () {
+            var transcript = "";
+            for (var i = event.resultIndex; i < event.results.length; i += 1) {
+                if (event.results[i].isFinal) {
+                    transcript += event.results[i][0].transcript;
+                }
+            }
+            console.log(transcript);
+            t.tamagotchi.tell(transcript);
+        };
     }
 });
 
