@@ -1,6 +1,12 @@
 "use strict";
 
 var t = {
+    CONTENT: {
+        main: "\u{1F431}",
+        hunger: "\u{274C}\u{274C}\u{274C}\u{274C}",
+        food: "\u{1F35E}\u{2753}\u{1F36C}"
+    },
+
     changeContent: function (text) {
         document.getElementsByClassName("content")[0].innerHTML = text;
     },
@@ -12,11 +18,7 @@ var t = {
             },
 
             getContent: function () {
-                if (name === "main") {
-                    return "\u{1F431}";
-                }
-
-                return "\u{274C}\u{274C}\u{274C}\u{274C}";
+                return t.CONTENT[name];
             },
 
             redraw: function () {
@@ -45,7 +47,10 @@ var t = {
                 if (message === "are you hungry?") {
                     this.gameScreen = new t.GameScreen("hunger");
                     this.refresh();
-                } else {
+                } else if (message === "let's eat") {
+                    this.gameScreen = new t.GameScreen("food");
+                    this.refresh();
+                } else if (message === "where are you?") {
                     this.gameScreen = new t.GameScreen("main");
                     this.refresh();
                 }

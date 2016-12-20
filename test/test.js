@@ -40,9 +40,21 @@ QUnit.test("'are you hungry?' will open the hunger screen", function(assert) {
     assert.equal(tamagotchi.getGameScreenName(), "hunger");
 });
 
+QUnit.test("'let's eat' will open the food screen", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("let's eat");
+    assert.equal(tamagotchi.getGameScreenName(), "food");
+});
+
 QUnit.test("A hungry tamagotchi shows 4 ❌ marks", function(assert) {
     tamagotchi = new t.Tamagotchi();
     tamagotchi.howWellFed = 0;
     tamagotchi.tell("are you hungry?");
     assert.equal(tamagotchi.getGameScreenContent(), "❌❌❌❌");
+});
+
+QUnit.test("The food screen offers some bread or candy", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("let's eat");
+    assert.equal(tamagotchi.getGameScreenContent(), "🍞❓🍬");
 });
