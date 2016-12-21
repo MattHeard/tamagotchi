@@ -96,24 +96,27 @@ t.Tamagotchi = function () {
         },
 
         tell: function (message) {
+            var triggers = {
+                hunger: /hungry/,
+                food: /(food|eat)/,
+                main: /^where are you$/
+            };
+
             var i,
-                hungerScreenTrigger = /^(hungry|are you hungry|are you really hungry|how hungry are you|are you very hungry)$/,
-                foodScreenTrigger = /^(do you need any food|let's eat|do you want something to eat|want something to eat)$/,
-                mainScreenTrigger = /^where are you$/,
-                feedMealTrigger = /^(eat some bread|have some bread|do you want some bread)$/,
-                feedSnackTrigger = /^(eat some candy|have some candy|want some lollies|want a lolly|want some candy|want a snack)$/,
-                bounceTrigger = /^hello$/;
-            if (hungerScreenTrigger.test(message)) {
+                feedMealTrigger = /bread/,
+                feedSnackTrigger = /candy|lollies|lolly|snack/,
+                bounceTrigger = /hello/;
+            if (triggers["hunger"].test(message)) {
                 this.changeGameScreen("hunger");
-            } else if (foodScreenTrigger.test(message)) {
-                this.changeGameScreen("food");
-            } else if (mainScreenTrigger.test(message)) {
-                this.changeGameScreen("main");
             } else if (feedMealTrigger.test(message)) {
                 for (i = 0; i < 4; i += 1) { this.increaseFullness(); }
                 this.changeGameScreen("main");
             } else if (feedSnackTrigger.test(message)) {
                 this.increaseFullness();
+                this.changeGameScreen("main");
+            } else if (triggers["food"].test(message)) {
+                this.changeGameScreen("food");
+            } else if (triggers["main"].test(message)) {
                 this.changeGameScreen("main");
             } else if (bounceTrigger.test(message)) {
                 this.animate();
