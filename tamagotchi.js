@@ -137,9 +137,7 @@ window.addEventListener("load", function () {
         content.className = "content";
         document.body.appendChild(content);
 
-        content = document.getElementsByClassName()[0];
-        content.addEventListener("transitionend", function () {
-            console.log("animation finished");
+        content.addEventListener("animationend", function () {
             content.classList.remove("hello");
         });
 

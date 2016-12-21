@@ -14,21 +14,17 @@ body {
         transform: translate3d(0, -1vh, 0);
     }
 
-    20%, 80% {
+    30%, 70% {
         transform: translate3d(0, 2vh, 0);
     }
 
-    30%, 50%, 70% {
-        transform: translate3d(0, -3vh, 0);
-    }
-
-    40%, 60% {
-        transform: translate3d(0, 3vh, 0);
+    50% {
+        transform: translate3d(0, -2vh, 0);
     }
 }
 
 /* The element to apply the animation to */
 .content.hello {
     animation-name: bounce;
-    animation-duration: 2s;
+    animation-duration: 1s;
 }
