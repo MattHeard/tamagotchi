@@ -112,7 +112,7 @@ t.Tamagotchi = function () {
             } else if (feedSnackTrigger.test(message)) {
                 this.increaseFullness();
                 this.changeGameScreen("main");
-            } else if (bounceTrigger.test(message)) {
+            } else if (this.getGameScreenName() === "main" && bounceTrigger.test(message)) {
                 this.animate();
             }
 
