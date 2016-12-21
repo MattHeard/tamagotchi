@@ -96,21 +96,26 @@ t.Tamagotchi = function () {
         },
 
         tell: function (message) {
-            var i;
-            var foodScreenTrigger = /^let's eat|do you want something to eat|want something to eat$/;
-            if (message === "are you hungry") {
+            var i,
+                hungerScreenTrigger = /^are you hungry$/,
+                foodScreenTrigger = /^let's eat|do you want something to eat|want something to eat$/,
+                mainScreenTrigger = /^where are you$/,
+                feedMealTrigger = /^have some bread$/,
+                feedSnackTrigger = /^have some candy$/,
+                bounceTrigger = /^hello$/;
+            if (hungerScreenTrigger.test(message)) {
                 this.changeGameScreen("hunger");
             } else if (foodScreenTrigger.test(message)) {
                 this.changeGameScreen("food");
-            } else if (message === "where are you") {
+            } else if (mainScreenTrigger.test(message)) {
                 this.changeGameScreen("main");
-            } else if (message === "have some bread") {
+            } else if (feedMealTrigger.test(message)) {
                 for (i = 0; i < 4; i += 1) { this.increaseFullness(); }
                 this.changeGameScreen("main");
-            } else if (message === "have some candy") {
+            } else if (feedSnackTrigger.test(message)) {
                 this.increaseFullness();
                 this.changeGameScreen("main");
-            } else if (message === "hello") {
+            } else if (bounceTrigger.test(message)) {
                 this.animate();
             }
 
