@@ -159,6 +159,8 @@ window.addEventListener("load", function () {
 
         setInterval(t.tick(t.tamagotchi), 10000);
 
+        var utterance = document.getElementsByClassName("utterance")[0];
+
         t.speechRecogniser = new t.SpeechRecogniser();
         t.speechRecogniser.onend = function () { t.speechRecogniser.start(); };
 
@@ -171,7 +173,7 @@ window.addEventListener("load", function () {
                 }
             }
 
-            console.log(transcript);
+            utterance.innerText = transcript;
             t.tamagotchi.tell(transcript);
         };
 
