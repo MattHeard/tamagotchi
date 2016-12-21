@@ -25,6 +25,7 @@ t.now = function () { return Date.now(); };
 t.tick = function (tamagotchi) {
     return function () {
         tamagotchi.updateFullness();
+        tamagotchi.updateDesire();
         tamagotchi.refresh();
     };
 };
@@ -69,6 +70,7 @@ t.GameScreen = function (name, tamagotchi) {
 
 t.Tamagotchi = function () {
     return {
+        desireTicks: 0,
         fullness: 0,
         gameScreen: new t.GameScreen("main", this),
 
@@ -161,6 +163,18 @@ t.Tamagotchi = function () {
             while (this.fullness > 0 && this.timeSinceFullnessLastChanged() > 60000) {
                 this.fullness -= 1;
                 this.fullnessLastChanged += 60000;
+            }
+        },
+
+        updateDesire: function () {
+            if (this.desireTicks > 0) {
+                this.desireTicks = 0;
+                this.changeGameScreen("main");
+                return;
+            }
+
+            if (this.getGameScreenName() === "desire") {
+                this.desireTicks += 1;
             }
         }
     };

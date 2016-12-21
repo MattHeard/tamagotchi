@@ -234,3 +234,18 @@ QUnit.test("do not desire food when not hungry", function(assert) {
     tamagotchi.tell("what do you want");
     assert.notEqual(tamagotchi.getGameScreenContent(), "🐱💭🍞");
 });
+
+QUnit.test("the desire is still visible after one tick", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("what do you want");
+    t.tick(tamagotchi)();
+    assert.equal(tamagotchi.getGameScreenContent(), "🐱💭🍞");
+});
+
+QUnit.test("the desire is not visible after two ticks", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("what do you want");
+    t.tick(tamagotchi)();
+    t.tick(tamagotchi)();
+    assert.notEqual(tamagotchi.getGameScreenContent(), "🐱💭🍞");
+});
