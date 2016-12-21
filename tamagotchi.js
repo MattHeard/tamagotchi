@@ -10,7 +10,8 @@ t.EMOJI = {
     CROSS: "\u{274C}",
     HEART: "\u{2764}",
     QUESTION_MARK: "\u{2753}",
-    SMILING_CAT_FACE_WITH_OPEN_MOUTH: "\u{1F63A}"
+    SMILING_CAT_FACE_WITH_OPEN_MOUTH: "\u{1F63A}",
+    THOUGHT_BALLOON: "\u{1F4AD}"
 };
 
 t.SpeechRecogniser = webkitSpeechRecognition;
@@ -51,6 +52,10 @@ t.GameScreen = function (name, tamagotchi) {
                 }
 
                 return t.EMOJI.CAT_FACE;
+            }
+
+            if (name === "desire") {
+                return t.EMOJI.CAT_FACE + t.EMOJI.THOUGHT_BALLOON + t.EMOJI.BREAD;
             }
 
             return t.EMOJI.BREAD + t.EMOJI.QUESTION_MARK + t.EMOJI.CANDY;
@@ -100,6 +105,7 @@ t.Tamagotchi = function () {
             triggers.set("hunger", /hungry/);
             triggers.set("food", /(food|eat)/);
             triggers.set("main", /^where are you$/);
+            triggers.set("desire", /^what do you want$/);
 
             var i,
                 feedMealTrigger = /bread/,

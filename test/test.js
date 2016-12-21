@@ -220,3 +220,9 @@ QUnit.test("'eat some bread' on the food menu makes the cat full", function(asse
     tamagotchi.tell("eat some bread");
     assert.equal(tamagotchi.getGameScreenContent(), "😺");
 });
+
+QUnit.test("'what do you want' when hungry shows 🐱💭🍞", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("what do you want");
+    assert.equal(tamagotchi.getGameScreenContent(), "🐱💭🍞");
+});
