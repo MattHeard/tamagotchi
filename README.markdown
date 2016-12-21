@@ -1,6 +1,10 @@
 Tamagotchi
 ==========
 
+Demo
+----
+[Live demo on Google Cloud](https://storage.googleapis.com/tamagotchi/tamagotchi.html)
+
 Summary
 -------
 
