@@ -13,8 +13,6 @@ t.EMOJI = {
     SMILING_CAT_FACE_WITH_OPEN_MOUTH: "\u{1F63A}"
 };
 
-t.CONTENT = { food: t.EMOJI.BREAD + t.EMOJI.QUESTION_MARK + t.EMOJI.CANDY };
-
 t.SpeechRecogniser = webkitSpeechRecognition;
 
 t.changeContent = function (text) {
@@ -55,7 +53,7 @@ t.GameScreen = function (name, tamagotchi) {
                 return t.EMOJI.CAT_FACE;
             }
 
-            return t.CONTENT[name];
+            return t.EMOJI.BREAD + t.EMOJI.QUESTION_MARK + t.EMOJI.CANDY;
         },
 
         redraw: function () { t.changeContent(this.getContent()); },
