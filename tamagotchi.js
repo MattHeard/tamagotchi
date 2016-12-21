@@ -116,7 +116,7 @@ t.Tamagotchi = function () {
                 feedMealTrigger = /bread/,
                 feedSnackTrigger = /candy|lollies|lolly|snack/,
                 bounceTrigger = /hello/,
-                desireTrigger = /^what do you want$/;
+                desireTrigger = /^what do you (want|need)$/;
 
             if (feedMealTrigger.test(message)) {
                 for (i = 0; i < 4; i += 1) { this.increaseFullness(); }
