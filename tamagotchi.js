@@ -100,17 +100,21 @@ t.Tamagotchi = function () {
             this.gameScreen.animate();
         },
 
+        isHungry: function () {
+            return this.fullness === 0;
+        },
+
         tell: function (message) {
             var triggers = new Map();
             triggers.set("hunger", /hungry/);
             triggers.set("food", /(food|eat)/);
             triggers.set("main", /^where are you$/);
-            triggers.set("desire", /^what do you want$/);
 
             var i,
                 feedMealTrigger = /bread/,
                 feedSnackTrigger = /candy|lollies|lolly|snack/,
-                bounceTrigger = /hello/;
+                bounceTrigger = /hello/,
+                desireTrigger = /^what do you want$/;
 
             if (feedMealTrigger.test(message)) {
                 for (i = 0; i < 4; i += 1) { this.increaseFullness(); }
@@ -126,6 +130,11 @@ t.Tamagotchi = function () {
 
             if (this.getGameScreenName() === "main" && bounceTrigger.test(message)) {
                 this.animate();
+                return message;
+            }
+
+            if (this.isHungry() && desireTrigger.test(message)) {
+                this.changeGameScreen("desire");
                 return message;
             }
 

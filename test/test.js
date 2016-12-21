@@ -226,3 +226,11 @@ QUnit.test("'what do you want' when hungry shows 🐱💭🍞", function(assert)
     tamagotchi.tell("what do you want");
     assert.equal(tamagotchi.getGameScreenContent(), "🐱💭🍞");
 });
+
+QUnit.test("do not desire food when not hungry", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("let's eat");
+    tamagotchi.tell("have some bread");
+    tamagotchi.tell("what do you want");
+    assert.notEqual(tamagotchi.getGameScreenContent(), "🐱💭🍞");
+});
