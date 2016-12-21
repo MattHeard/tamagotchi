@@ -97,9 +97,10 @@ t.Tamagotchi = function () {
 
         tell: function (message) {
             var i;
+            var foodScreenTrigger = /^let's eat|do you want something to eat|want something to eat$/;
             if (message === "are you hungry") {
                 this.changeGameScreen("hunger");
-            } else if (message === "let's eat") {
+            } else if (foodScreenTrigger.test(message)) {
                 this.changeGameScreen("food");
             } else if (message === "where are you") {
                 this.changeGameScreen("main");
