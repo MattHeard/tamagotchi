@@ -36,10 +36,40 @@ QUnit.test("'where are you' will open the main screen", function(assert) {
     assert.equal(tamagotchi.getGameScreenName(), "main");
 });
 
+QUnit.test("'how hungry are you' will open the hunger screen", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("how hungry are you");
+    assert.equal(tamagotchi.getGameScreenName(), "hunger");
+});
+
+QUnit.test("'are you very hungry' will open the hunger screen", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("are you very hungry");
+    assert.equal(tamagotchi.getGameScreenName(), "hunger");
+});
+
+QUnit.test("'are you really hungry' will open the hunger screen", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("are you really hungry");
+    assert.equal(tamagotchi.getGameScreenName(), "hunger");
+});
+
+QUnit.test("'hungry' will open the hunger screen", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("hungry");
+    assert.equal(tamagotchi.getGameScreenName(), "hunger");
+});
+
 QUnit.test("'are you hungry' will open the hunger screen", function(assert) {
     tamagotchi = new t.Tamagotchi();
     tamagotchi.tell("are you hungry");
     assert.equal(tamagotchi.getGameScreenName(), "hunger");
+});
+
+QUnit.test("'do you need any food' will open the food screen", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("do you need any food");
+    assert.equal(tamagotchi.getGameScreenName(), "food");
 });
 
 QUnit.test("'want something to eat' will open the food screen", function(assert) {
@@ -71,6 +101,79 @@ QUnit.test("The food screen offers some bread or candy", function(assert) {
     tamagotchi = new t.Tamagotchi();
     tamagotchi.tell("let's eat");
     assert.equal(tamagotchi.getGameScreenContent(), "🍞❓🍬");
+});
+
+QUnit.test("'eat some bread' will feed bread", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("let's eat");
+    tamagotchi.tell("eat some bread");
+    tamagotchi.tell("are you hungry");
+    assert.equal(tamagotchi.getGameScreenContent(), "❤❤❤❤");
+});
+
+QUnit.test("'have some bread' will feed bread", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("let's eat");
+    tamagotchi.tell("have some bread");
+    tamagotchi.tell("are you hungry");
+    assert.equal(tamagotchi.getGameScreenContent(), "❤❤❤❤");
+});
+
+QUnit.test("'want a snack' will feed candy", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("let's eat");
+    tamagotchi.tell("want a snack");
+    tamagotchi.tell("are you hungry");
+    assert.equal(tamagotchi.getGameScreenContent(), "❤❌❌❌");
+});
+
+QUnit.test("'want some candy' will feed candy", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("let's eat");
+    tamagotchi.tell("want some candy");
+    tamagotchi.tell("are you hungry");
+    assert.equal(tamagotchi.getGameScreenContent(), "❤❌❌❌");
+});
+
+QUnit.test("'want a lolly' will feed candy", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("let's eat");
+    tamagotchi.tell("want a lolly");
+    tamagotchi.tell("are you hungry");
+    assert.equal(tamagotchi.getGameScreenContent(), "❤❌❌❌");
+});
+
+QUnit.test("'want some lollies' will feed candy", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("let's eat");
+    tamagotchi.tell("want some lollies");
+    tamagotchi.tell("are you hungry");
+    assert.equal(tamagotchi.getGameScreenContent(), "❤❌❌❌");
+});
+
+QUnit.test("'eat some candy' will feed candy", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("let's eat");
+    tamagotchi.tell("eat some candy");
+    tamagotchi.tell("are you hungry");
+    assert.equal(tamagotchi.getGameScreenContent(), "❤❌❌❌");
+});
+
+QUnit.test("'have some candy' will feed candy", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("let's eat");
+    tamagotchi.tell("have some candy");
+    tamagotchi.tell("are you hungry");
+    assert.equal(tamagotchi.getGameScreenContent(), "❤❌❌❌");
+});
+
+
+QUnit.test("'do you want some bread' will feed bread", function(assert) {
+    tamagotchi = new t.Tamagotchi();
+    tamagotchi.tell("let's eat");
+    tamagotchi.tell("do you want some bread");
+    tamagotchi.tell("are you hungry");
+    assert.equal(tamagotchi.getGameScreenContent(), "❤❤❤❤");
 });
 
 QUnit.test("Feeding bread will open the main screen", function(assert) {

@@ -97,11 +97,11 @@ t.Tamagotchi = function () {
 
         tell: function (message) {
             var i,
-                hungerScreenTrigger = /^are you hungry$/,
-                foodScreenTrigger = /^let's eat|do you want something to eat|want something to eat$/,
+                hungerScreenTrigger = /^(hungry|are you hungry|are you really hungry|how hungry are you|are you very hungry)$/,
+                foodScreenTrigger = /^(do you need any food|let's eat|do you want something to eat|want something to eat)$/,
                 mainScreenTrigger = /^where are you$/,
-                feedMealTrigger = /^have some bread$/,
-                feedSnackTrigger = /^have some candy$/,
+                feedMealTrigger = /^(eat some bread|have some bread|do you want some bread)$/,
+                feedSnackTrigger = /^(eat some candy|have some candy|want some lollies|want a lolly|want some candy|want a snack)$/,
                 bounceTrigger = /^hello$/;
             if (hungerScreenTrigger.test(message)) {
                 this.changeGameScreen("hunger");
