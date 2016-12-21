@@ -96,30 +96,31 @@ t.Tamagotchi = function () {
         },
 
         tell: function (message) {
-            var triggers = {
-                hunger: /hungry/,
-                food: /(food|eat)/,
-                main: /^where are you$/
-            };
+            var triggers = new Map();
+            triggers.set("hunger", /hungry/);
+            triggers.set("food", /(food|eat)/);
+            triggers.set("main", /^where are you$/);
 
             var i,
                 feedMealTrigger = /bread/,
                 feedSnackTrigger = /candy|lollies|lolly|snack/,
                 bounceTrigger = /hello/;
-            if (triggers["hunger"].test(message)) {
-                this.changeGameScreen("hunger");
-            } else if (feedMealTrigger.test(message)) {
+
+            if (feedMealTrigger.test(message)) {
                 for (i = 0; i < 4; i += 1) { this.increaseFullness(); }
                 this.changeGameScreen("main");
             } else if (feedSnackTrigger.test(message)) {
                 this.increaseFullness();
                 this.changeGameScreen("main");
-            } else if (triggers["food"].test(message)) {
-                this.changeGameScreen("food");
-            } else if (triggers["main"].test(message)) {
-                this.changeGameScreen("main");
             } else if (bounceTrigger.test(message)) {
                 this.animate();
+            }
+
+            for (var [screen, utterances] of triggers) {
+                if (utterances.test(message)) {
+                    this.changeGameScreen(screen);
+                    return message;
+                }
             }
 
             return message;
