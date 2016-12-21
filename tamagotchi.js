@@ -1,9 +1,19 @@
 "use strict";
 
 var webkitSpeechRecognition,
-    t = new Object();
+    t = {};
 
-t.CONTENT = { food: "\u{1F35E}\u{2753}\u{1F36C}" };
+t.EMOJI = {
+    BREAD: "\u{1F35E}",
+    CANDY: "\u{1F36C}",
+    CAT_FACE: "\u{1F431}",
+    CROSS: "\u{274C}",
+    HEART: "\u{2764}",
+    QUESTION_MARK: "\u{2753}",
+    SMILING_CAT_FACE_WITH_OPEN_MOUTH: "\u{1F63A}"
+};
+
+t.CONTENT = { food: t.EMOJI.BREAD + t.EMOJI.QUESTION_MARK + t.EMOJI.CANDY };
 
 t.SpeechRecogniser = webkitSpeechRecognition;
 
@@ -31,16 +41,18 @@ t.GameScreen = function (name, tamagotchi) {
         getContent: function () {
             if (name === "hunger") {
                 var numberOfHearts = tamagotchi.fullness,
-                    hearts = "\u{2764}".repeat(numberOfHearts),
+                    hearts = t.EMOJI.HEART.repeat(numberOfHearts),
                     numberOfCrosses = 4 - tamagotchi.fullness,
-                    crosses = "\u{274C}".repeat(numberOfCrosses);
+                    crosses = t.EMOJI.CROSS.repeat(numberOfCrosses);
                 return hearts + crosses;
             }
 
             if (name === "main") {
-                if (tamagotchi.fullness === 4) { return "\u{1F63A}"; }
+                if (tamagotchi.fullness === 4) {
+                    return t.EMOJI.SMILING_CAT_FACE_WITH_OPEN_MOUTH;
+                }
 
-                return "\u{1F431}";
+                return t.EMOJI.CAT_FACE;
             }
 
             return t.CONTENT[name];
