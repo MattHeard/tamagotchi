@@ -146,12 +146,10 @@ t.Tamagotchi = function () {
     };
 };
 
+
 window.addEventListener("load", function () {
     if (window.location.pathname.endsWith("/tamagotchi.html")) {
-        var content = document.createElement("DIV");
-        content.className = "content";
-        document.body.appendChild(content);
-
+        var content = document.getElementsByClassName("content")[0];
         content.addEventListener("animationend", function () {
             content.classList.remove("hello");
         });
