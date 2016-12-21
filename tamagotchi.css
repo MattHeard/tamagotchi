@@ -24,8 +24,9 @@ body {
 
 .utterance {
     font-size: 5vh;
-    font-family: cursive;
+    font-family: sans-serif;
     color: saddlebrown;
+    text-align: center;
 }
 
 @keyframes bounce {
