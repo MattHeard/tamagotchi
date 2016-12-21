@@ -109,21 +109,26 @@ t.Tamagotchi = function () {
             if (feedMealTrigger.test(message)) {
                 for (i = 0; i < 4; i += 1) { this.increaseFullness(); }
                 this.changeGameScreen("main");
-            } else if (feedSnackTrigger.test(message)) {
+                return message;
+            }
+
+            if (feedSnackTrigger.test(message)) {
                 this.increaseFullness();
                 this.changeGameScreen("main");
-            } else if (this.getGameScreenName() === "main" && bounceTrigger.test(message)) {
+                return message;
+            }
+
+            if (this.getGameScreenName() === "main" && bounceTrigger.test(message)) {
                 this.animate();
+                return message;
             }
 
             for (var [screen, utterances] of triggers) {
-                if (utterances.test(message)) {
+                if (utterances.test(message) && this.getGameScreenName() !== screen) {
                     this.changeGameScreen(screen);
                     return message;
                 }
             }
-
-            return message;
         },
 
         refresh: function () { this.gameScreen.redraw(); },
