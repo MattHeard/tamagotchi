@@ -30,8 +30,8 @@ t.tick = function (tamagotchi) {
     };
 };
 
-t.animateContent = function () {
-    document.getElementsByClassName("content")[0].className += " hello";
+t.animateContent = function (animation) {
+    document.getElementsByClassName("content")[0].className += " " + animation;
 };
 
 t.GameScreen = function (name, tamagotchi) {
@@ -64,7 +64,7 @@ t.GameScreen = function (name, tamagotchi) {
 
         redraw: function () { t.changeContent(this.getContent()); },
 
-        animate: function () { t.animateContent(); }
+        animate: function (animation) { t.animateContent(animation); }
     };
 };
 
@@ -101,8 +101,8 @@ t.Tamagotchi = function () {
             }
         },
 
-        animate: function () {
-            this.gameScreen.animate();
+        animate: function (animation) {
+            this.gameScreen.animate(animation);
         },
 
         isHungry: function () {
@@ -119,6 +119,7 @@ t.Tamagotchi = function () {
                 feedMealTrigger = /bread/,
                 feedSnackTrigger = /candy|lollies|lolly|snack/,
                 bounceTrigger = /hello/,
+                danceTrigger = /dance/,
                 desireTrigger = /^what do you (want|need)$/;
 
             if (feedMealTrigger.test(message)) {
@@ -133,8 +134,13 @@ t.Tamagotchi = function () {
                 return message;
             }
 
+            if (this.getGameScreenName() === "main" && danceTrigger.test(message)) {
+                this.animate("dance");
+                return message;
+            }
+
             if (this.getGameScreenName() === "main" && bounceTrigger.test(message)) {
-                this.animate();
+                this.animate("bounce");
                 return message;
             }
 
@@ -195,7 +201,8 @@ window.addEventListener("load", function () {
     if (window.location.pathname.endsWith("/tamagotchi.html")) {
         var content = document.getElementsByClassName("content")[0];
         content.addEventListener("animationend", function () {
-            content.classList.remove("hello");
+            content.classList.remove("dance");
+            content.classList.remove("bounce");
         });
 
         t.tamagotchi = new t.Tamagotchi();
