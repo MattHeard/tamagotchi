@@ -119,7 +119,7 @@ t.Tamagotchi = function () {
                 feedMealTrigger = /bread/,
                 feedSnackTrigger = /candy|lollies|lolly|snack/,
                 bounceTrigger = /hello/,
-                danceTrigger = /dance/,
+                danceTrigger = /danc(e|ing)/,
                 desireTrigger = /^what do you (want|need)$/;
 
             if (feedMealTrigger.test(message)) {
