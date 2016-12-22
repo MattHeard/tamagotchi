@@ -48,7 +48,7 @@ t.GameScreen = function (name, tamagotchi) {
             }
 
             if (name === "main") {
-                if (tamagotchi.fullness === 4) {
+                if (tamagotchi.fullness == 4) {
                     return t.EMOJI.SMILING_CAT_FACE_WITH_OPEN_MOUTH;
                 }
 
@@ -94,7 +94,10 @@ t.Tamagotchi = function () {
         increaseFullness: function () {
             if (this.fullness !== 4) {
                 this.fullness += 1;
+                localStorage.isTamagotchiAlive = "true";
+                localStorage.fullness = this.fullness;
                 this.fullnessLastChanged = t.now();
+                localStorage.fullnessLastChanged = this.fullnessLastChanged;
             }
         },
 
@@ -148,7 +151,11 @@ t.Tamagotchi = function () {
             }
         },
 
-        refresh: function () { this.gameScreen.redraw(); },
+        refresh: function () {
+            var name = this.getGameScreenName();
+            this.gameScreen = new t.GameScreen(name, this);
+            this.gameScreen.redraw();
+        },
 
         start: function () {
             this.fullnessLastChanged = t.now();
@@ -162,7 +169,10 @@ t.Tamagotchi = function () {
         updateFullness: function () {
             while (this.fullness > 0 && this.timeSinceFullnessLastChanged() > 60000) {
                 this.fullness -= 1;
+                localStorage.isTamagotchiAlive = "true";
+                localStorage.fullness = this.fullness;
                 this.fullnessLastChanged += 60000;
+                localStorage.fullnessLastChanged = this.fullnessLastChanged;
             }
         },
 
@@ -190,6 +200,12 @@ window.addEventListener("load", function () {
 
         t.tamagotchi = new t.Tamagotchi();
         t.tamagotchi.start();
+
+        if (typeof(Storage) !== "undefined" && localStorage.isTamagotchiAlive !== undefined) {
+            t.tamagotchi.fullness = Number(localStorage.fullness);
+            t.tamagotchi.fullnessLastChanged = Number(localStorage.fullnessLastChanged);
+            t.tamagotchi.refresh();
+        }
 
         setInterval(t.tick(t.tamagotchi), 10000);
 
