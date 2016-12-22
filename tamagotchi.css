@@ -8,6 +8,7 @@ body {
     font-family: "NotoColorEmoji", "Apple Color Emoji";
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 .expand {
@@ -19,7 +20,7 @@ body {
 }
 
 .content {
-    font-size: 20vw;
+    font-size: 15vw;
 }
 
 .footer {
@@ -31,7 +32,6 @@ body {
     font-size: 5vh;
     font-family: sans-serif;
     color: saddlebrown;
-    text-align: center;
 }
 
 @keyframes bounce {

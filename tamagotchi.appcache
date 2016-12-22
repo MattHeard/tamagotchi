@@ -1,7 +1,8 @@
 CACHE MANIFEST
-# 2016-12-23:v7
+# 2016-12-23:v10
 
 CACHE:
+manifest.json
 tamagotchi.html
 tamagotchi.js
 tamagotchi.css
