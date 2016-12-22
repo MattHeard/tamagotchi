@@ -1,8 +1,13 @@
+html {
+    height: 100%;
+}
+
 body {
-  background-image: url("background.jpg");
-  font-family: "NotoColorEmoji", "Apple Color Emoji";
-  display: flex;
-  flex-direction: column;
+    height: 100%;
+    background-image: url("background.jpg");
+    font-family: "NotoColorEmoji", "Apple Color Emoji";
+    display: flex;
+    flex-direction: column;
 }
 
 .expand {
@@ -14,7 +19,7 @@ body {
 }
 
 .content {
-  font-size: 20vw;
+    font-size: 20vw;
 }
 
 .footer {

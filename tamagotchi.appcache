@@ -1,0 +1,10 @@
+CACHE MANIFEST
+# 2016-12-22:v0
+
+CACHE:
+tamagotchi.html
+tamagotchi.js
+tamagotchi.css
+
+NETWORK:
+*
