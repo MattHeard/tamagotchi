@@ -17,7 +17,10 @@ t.EMOJI = {
 t.SpeechRecogniser = webkitSpeechRecognition;
 
 t.changeContent = function (text) {
-    document.getElementsByClassName("content")[0].innerHTML = text;
+    var content = document.getElementsByClassName("content")[0];
+    content.innerHTML = text;
+    content.classList.remove("bounce");
+    content.classList.remove("dance");
 };
 
 t.now = function () { return Date.now(); };
@@ -37,6 +40,8 @@ t.animateContent = function (animation) {
 t.GameScreen = function (name, tamagotchi) {
     return {
         getName: function () { return name; },
+
+        removeAnimations: function () { console.log("removeAnimations"); },
 
         getContent: function () {
             if (name === "hunger") {
